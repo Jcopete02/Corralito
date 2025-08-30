@@ -1,0 +1,11 @@
+{
+    "workbench.editor.alwaysShowEditorActions": true,
+    "workbench.editor.autoLockGroups": {
+        "workbench.editorinputs.searchEditorInput": true,
+        "mainThreadWebview-markdown.preview": true,
+        "default": true,
+        "notebookOutputEditor": true
+    },
+    "workbench.editor.closeOnFileDelete": true,
+    "git.ignoreLimitWarning": true
+}

@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Encabezado */
+header {
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+/* Contenedor de redes sociales */
+.social-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+/* Estilo general de cada tarjeta */
+.social-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 1.5rem;
+  border-radius: 15px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.social-card i {
+  font-size: 1.8rem;
+}
+
+/* Efecto hover */
+.social-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* Colores de cada red social */
+.facebook {
+  background: #1877f2;
+}
+
+.instagram {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+.twitter {
+  background: #1da1f2;
+}
+
+.twitch {
+  background: #6441a5;
+}
+
+.tiktok {
+  background: #000000;
+}
+
+.youtube {
+  background: #ff0000;
+}
+
+.whatsapp {
+  background: #25d366;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  background: rgba(0,0,0,0.2);
+}
+
+footer img {
+  max-width: 120px;
+  margin-bottom: 1rem;
+}
+
+footer p {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+

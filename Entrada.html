@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilo_entrada.css">
+  <link rel="icon" type="image/png" href="img/Subido comprimido -Escudo.jpg">
+  <title>Corralito Futbolero - Home</title>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <h2>CORRALITO</h2>
+    <ul>
+      <li class="active"><a href="dashboard.html">🏠 Dashboard</a></li>
+      <li><a href="fotografia.html">📸 Fotografías</a></li>
+      <li><a href="Redes sociales.html">📱 Redes Sociales</a></li>
+      <li><a href="live.html">🔴 Live</a></li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="menu-btn" id="menu-btn">☰</div>
+      <h1>Dashboard</h1>
+      <div class="account-wrapper">
+        <div class="account" id="account-btn">Cuenta ▾</div>
+        <ul class="account-menu" id="account-menu">
+          <li><a href="index.html">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>⚽ Tabla de Goleadores</h3>
+        <table class="tabla-goleadores">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jugador</th>
+              <th>Goles</th>
+              <th>Equipo</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-goleadores-body">
+            </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>⚽ Tabla de Asistencias</h3>
+        <table class="tabla-asistencias">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jugador</th>
+              <th>Asistencias</th>
+              <th>Equipo</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-asistencias-body">
+            </tbody>
+        </table>
+      </div>
+
+      <div class="card" id="clima">
+        <h3>🌤️ Clima actual</h3>
+        <p id="ubicacion">Obteniendo ubicación...</p>
+        <p id="temperatura"></p>
+        <p id="descripcion"></p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card fase-grupos">
+       <h3>📊 Fase de Grupos</h3>
+       <img src="istockphoto-982408160-612x612.jpg" alt="Fase de Grupos">
+      </div>
+      <div class="card noticias">
+        <h3>📰 Noticias</h3>
+        <div class="noticia">
+          <img src="Noticias.jpg" alt="Noticia en imagen">
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-bottom">
+      <div class="card"></div>
+    </div>
+
+    <div class="equipo-cards-container">
+        </div>
+  </div>
+
+  <script src="logica.js"></script>
+</body>
+</html>

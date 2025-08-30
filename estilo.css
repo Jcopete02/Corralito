@@ -1,0 +1,211 @@
+/* ======== ESTILOS GENERALES ======== */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+              0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+  max-width: 100%;
+  min-height: 500px;
+  display: flex;
+}
+
+/* ======== COLUMNA IZQUIERDA ======== */
+.left {
+  flex: 1;
+  padding: 40px; /* más aire que antes */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+p {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.input-group {
+  margin-bottom: 20px; /* espacio suficiente */
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover y focus */
+.input-group input:hover,
+.input-group input:focus {
+  border-color: #222;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  outline: none;
+}
+
+.forgot {
+  font-size: 13px;
+  color: #007bff;
+  text-decoration: none;
+  margin: 10px 0 20px 0;
+  display: inline-block;
+}
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* ======== BOTONES CON REBOTE ======== */
+button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  background: #314e27;
+  animation: bounceUp 0.4s ease forwards;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.btnInfo {
+  background: #0e0b0b;
+  margin-top: 20px;
+  font-size: 14px;
+  padding: 12px;
+  
+
+  
+}
+
+
+
+.social {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social:hover {
+  background: #f0f0f0;
+}
+
+footer {
+  font-size: 12px;
+  color: #888;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* ======== COLUMNA DERECHA ======== */
+.right {
+  flex: 1;
+  background: url('cancha.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 300px;
+}
+
+.right img {
+  width: 120px;
+  height: auto;
+  border-radius: 50%;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 95%;
+    margin: 20px;
+  }
+
+  .left {
+    padding: 25px;
+  }
+
+  .logo {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  .input-group {
+    margin-bottom: 18px;
+  }
+
+  .buttons {
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .right {
+    order: -1;
+    min-height: 200px;
+  }
+
+  .right img {
+    width: 100px;
+  }
+}
