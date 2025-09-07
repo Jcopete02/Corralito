@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const sql = require("mssql");
 const cors = require("cors");
@@ -8,14 +9,14 @@ app.use(express.json());
 
 // Configuración de conexión
 const dbConfig = {
-    user: "sa",
-    password: "jhoncopete02",
-    server: "LaptopJhoimar",   // o el nombre del servidor
-    database: "Corralito",
-    options: {
-        encrypt: false, // Cambiar a true si usas Azure
-        trustServerCertificate: true
-    }
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_NAME,
+  options: {
+    encrypt: false,
+    trustServerCertificate: true,
+  },
 };
 // Login de usuario contra la tabla Usuario
 app.post("/api/login", async (req, res) => {
