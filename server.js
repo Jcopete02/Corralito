@@ -1,29 +1,45 @@
 const express = require("express");
 const sql = require("mssql");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Configuración de conexión
+// Configuración de conexión usando variables de entorno
 const dbConfig = {
-    user: "sa",
-    password: "jhoncopete02",
-    server: "LaptopJhoimar",   // o el nombre del servidor
-    database: "Corralito",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    server: process.env.DB_SERVER,
+    database: process.env.DB_DATABASE,
     options: {
-        encrypt: false, // Cambiar a true si usas Azure
-        trustServerCertificate: true
+        encrypt: process.env.DB_ENCRYPT === "true",
+        trustServerCertificate: false
     }
 };
+
+// Crear pool global de conexiones
+const poolPromise = new sql.ConnectionPool(dbConfig)
+    .connect()
+    .then(pool => {
+        console.log("✅ Conexión a SQL Server en AWS exitosa");
+        return pool;
+    })
+    .catch(err => {
+        console.error("❌ Error de conexión a la BD:", err);
+        process.exit(1); // salir si no conecta
+    });
+
+// ------------------- RUTAS ------------------- //
+
 // Login de usuario contra la tabla Usuario
 app.post("/api/login", async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        let pool = await sql.connect(dbConfig);
-        let result = await pool.request()
+        const pool = await poolPromise;
+        const result = await pool.request()
             .input("email", sql.VarChar, email)
             .input("password", sql.VarChar, password)
             .query(`
@@ -40,14 +56,14 @@ app.post("/api/login", async (req, res) => {
         }
     } catch (err) {
         console.error("❌ Error en login:", err);
-        res.status(500).send(err.message);
+        res.status(500).send("Error interno en el servidor");
     }
 });
 
-// Nueva ruta para obtener la tabla de goleadores
+// Ruta para obtener la tabla de goleadores
 app.get("/api/goleadores", async (req, res) => {
     try {
-        let pool = await sql.connect(dbConfig);
+        const pool = await poolPromise;
         const result = await pool.request().query(`
             SELECT TOP 3 J.Nombre AS Jugador, G.Goles, E.NombreEquipo
             FROM Goleadores G
@@ -58,14 +74,14 @@ app.get("/api/goleadores", async (req, res) => {
         res.json(result.recordset);
     } catch (err) {
         console.error("❌ Error al obtener goleadores:", err);
-        res.status(500).send(err.message);
+        res.status(500).send("Error interno en el servidor");
     }
 });
 
-// Nueva ruta para obtener la tabla de asistencias
+// Ruta para obtener la tabla de asistencias
 app.get("/api/asistencias", async (req, res) => {
     try {
-        let pool = await sql.connect(dbConfig);
+        const pool = await poolPromise;
         const result = await pool.request().query(`
             SELECT TOP 3 J.Nombre AS Jugador, A.Asistencias, E.NombreEquipo
             FROM Asistencias A
@@ -76,15 +92,15 @@ app.get("/api/asistencias", async (req, res) => {
         res.json(result.recordset);
     } catch (err) {
         console.error("❌ Error al obtener asistencias:", err);
-        res.status(500).send(err.message);
+        res.status(500).send("Error interno en el servidor");
     }
 });
 
-// Nueva ruta para obtener los jugadores por equipo
+// Ruta para obtener jugadores por equipo
 app.get("/api/equipos/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        let pool = await sql.connect(dbConfig);
+        const pool = await poolPromise;
         const result = await pool.request()
             .input("equipoId", sql.Int, id)
             .query(`
@@ -95,13 +111,12 @@ app.get("/api/equipos/:id", async (req, res) => {
         res.json(result.recordset);
     } catch (err) {
         console.error("❌ Error al obtener jugadores del equipo:", err);
-        res.status(500).send(err.message);
+        res.status(500).send("Error interno en el servidor");
     }
 });
 
-
-// Iniciar servidor
-const PORT = 5000;
+// ------------------- INICIO DEL SERVIDOR ------------------- //
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
