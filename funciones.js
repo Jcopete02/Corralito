@@ -3,6 +3,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
+  console.log("Intentando conectar a:", 'https://corralito-seven.vercel.app/api/login');
 
   try {
     const res = await fetch('https://corralito-seven.vercel.app/api/login', {
@@ -11,7 +12,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       body: JSON.stringify({ email, password: pass })
     });
 
-
+    console.log("Respuesta recibida:", response);
     const data = await res.json();
     
     if (data.success) {
@@ -20,7 +21,9 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     } else {
       alert("❌ " + data.message);
     }
+
   } catch (err) {
-    alert("⚠️ Error de conexión con el servidor");
-  }
+    console.error("Error completo:", err);
+    alert("Error: " + err.message);
+}
 });
