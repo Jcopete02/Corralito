@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para obtener y mostrar la tabla de goleadores
     const fetchGoleadores = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/goleadores");
+            const res = await fetch("https://corralito-seven.vercel.app/goleadores");
             const goleadores = await res.json();
             const tbody = document.getElementById("tabla-goleadores-body");
             tbody.innerHTML = ""; // Limpiar la tabla
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para obtener y mostrar la tabla de asistencias
     const fetchAsistencias = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/asistencias");
+            const res = await fetch("https://corralito-seven.vercel.app/asistencias");
             const asistencias = await res.json();
             const tbody = document.getElementById("tabla-asistencias-body");
             tbody.innerHTML = ""; // Limpiar la tabla
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (let i = 1; i <= 16; i++) {
             try {
-                const res = await fetch(`http://localhost:5000/api/equipos/${i}`);
+                const res = await fetch(`https://corralito-seven.vercel.app/equipos/${i}`);
                 const jugadores = await res.json();
                 
                 const card = document.createElement("div");
